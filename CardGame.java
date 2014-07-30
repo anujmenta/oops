@@ -6,8 +6,30 @@ import java.util.*;
 
 public class CardGame {
     public static void main(String[] args) {
-        CardGame game1 = new CardGame();
-        game1.print_n_cards(3);
+        CardGame game = new CardGame();
+        Integer card1_id;
+        System.out.println("Three cards are:");
+        game.print_n_cards(3);
+        card1_id = game.card_list.get(0);
+
+        System.out.println("Shuffling the cards");
+        Collections.shuffle(game.card_list);
+
+        System.out.println("Guess the position of the first card");
+
+        Integer n;
+        java.util.Scanner in;
+        in = new java.util.Scanner(System.in);
+        n = in.nextInt();
+
+        if(game.card_list.indexOf(card1_id) == n - 1){
+            System.out.println("Wow, you guessed it right");
+        }
+        else {
+            System.out.println("Sorry, the correct position is " +
+                    game.card_list.indexOf(card1_id));
+        }
+
         System.exit(0);
     }
 
