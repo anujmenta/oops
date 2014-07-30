@@ -13,7 +13,9 @@ public class CardGame {
         card1_id = game.card_list.get(0);
 
         System.out.println("Shuffling the cards");
-        Collections.shuffle(game.card_list);
+        ArrayList<Integer> first_3_cards = new ArrayList<Integer>(game.card_list.subList(0, 3));
+
+        Collections.shuffle(first_3_cards);
 
         System.out.println("Guess the position of the first card");
 
@@ -22,12 +24,12 @@ public class CardGame {
         in = new java.util.Scanner(System.in);
         n = in.nextInt();
 
-        if(game.card_list.indexOf(card1_id) == n - 1){
+        if(first_3_cards.indexOf(card1_id) == n - 1){
             System.out.println("Wow, you guessed it right");
         }
         else {
             System.out.println("Sorry, the correct position is " +
-                    game.card_list.indexOf(card1_id));
+                    (first_3_cards.indexOf(card1_id) + 1));
         }
 
         System.exit(0);
